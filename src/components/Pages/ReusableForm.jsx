@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Button from '../Elements/Form/Button';
 import InputField from '../Elements/Form/InputField';
 import { Validators } from '../Elements/Utilities/Validator';
 
@@ -9,8 +10,13 @@ export default function ReusableForm() {
     phone: ''
   });
   
-  const changeHandle = (key) => (value) => {
+  const changeHandleInput = (key) => (value) => {
     setInitValue({ ...initValue, [key]: value });
+  }
+
+  const changeHandleButton = (event) => {
+    event.preventDefault();
+    console.log(Math.random());
   }
 
   const {name, email, phone} = initValue;
@@ -26,7 +32,7 @@ export default function ReusableForm() {
           check: Validators.required, 
           message: 'Full name is required'
         }]}
-        onChange={changeHandle('name')} 
+        onChange={changeHandleInput('name')} 
       />
       <InputField 
         type="email"
@@ -37,7 +43,7 @@ export default function ReusableForm() {
           check: Validators.email, 
           message: 'Please enter valid email address'
         }]}
-        onChange={changeHandle('email')} 
+        onChange={changeHandleInput('email')} 
       />
       <InputField 
         type="text"
@@ -48,7 +54,11 @@ export default function ReusableForm() {
           check: Validators.number, 
           message: 'Please enter valid phone number'
         }]}
-        onChange={changeHandle('phone')} 
+        onChange={changeHandleInput('phone')} 
+      />
+      <Button
+        value="Click me!"
+        onClick={changeHandleButton}
       />
     </div>
   )
