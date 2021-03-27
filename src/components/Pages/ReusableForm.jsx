@@ -15,14 +15,25 @@ export default function ReusableForm() {
       <InputField 
         type="text"
         value={value} 
-        placeholder="Hello text"
-        label="name"
+        placeholder="Please enter full name"
+        label="Full name"
         validators={[{
           check: Validators.required, 
-          message: 'This field is required'
+          message: 'Full name is required'
         }]}
         onChange={changeHandle} 
       />
+      {/* <InputField 
+        type="email"
+        value={initValue.email} 
+        placeholder="Please enter email address"
+        label="Email address"
+        validators={[{
+          check: Validators.required, 
+          message: 'Email address is required'
+        }]}
+        onChange={changeHandle} 
+      /> */}
     </div>
   )
 }
