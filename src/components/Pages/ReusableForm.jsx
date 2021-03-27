@@ -1,22 +1,36 @@
 import { useState } from 'react';
 import Button from '../Elements/Form/Button';
+import DropDown from '../Elements/Form/DropDown';
 import InputField from '../Elements/Form/InputField';
 import { Validators } from '../Elements/Utilities/Validator';
 
 export default function ReusableForm() {
-  const [initValue, setInitValue] = useState({
-    name: '',
-    email: '',
-    phone: ''
-  });
+  const [initValue, setInitValue] = useState({ name: '', email: '', phone: '' });
+  const [language, setLanguage] = useState('');
+
+  // for DropDown initial value
+  const dropData = [
+    { value: "hi", label: "IN"},
+    { value: "bn", label: "BD"},
+    { value: "ar", label: "SA"},
+    { value: "en", label: "US"},
+    { value: "ab", label: "SK"},
+  ]
   
+  // for input onChnage
   const changeHandleInput = (key) => (value) => {
     setInitValue({ ...initValue, [key]: value });
   }
 
-  const changeHandleButton = (event) => {
+  // for button onClick
+  const clickHandleButton = (event) => {
     event.preventDefault();
     console.log(Math.random());
+  }
+
+  // for dropdown onChnage
+  const changeHandleDropDown = (langs) => {
+    setLanguage(langs);
   }
 
   const {name, email, phone} = initValue;
@@ -55,9 +69,16 @@ export default function ReusableForm() {
         }]}
         onChange={changeHandleInput('phone')} 
       />
+      <DropDown 
+        data={dropData}
+        value={language}
+        initPlaceholder="Select Language"
+        onChange={changeHandleDropDown}
+      />
+      <p>{new Date().toLocaleTimeString(language === '' ? "en" : language)}</p>
       <Button
         value="Click me!"
-        onClick={changeHandleButton}
+        onClick={clickHandleButton}
       />
     </div>
   )
