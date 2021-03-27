@@ -2,11 +2,12 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { validateInput } from "../Utilities/Validator";
 
-function InputField({
+export default function InputField({
   value,
   type,
   label,
-  customClass,
+  inputClass,
+  divClass,
   placeholder,
   validators,
   onChange,
@@ -20,14 +21,14 @@ function InputField({
   };
 
   return (
-    <div className="app-input-field">
+    <div className={divClass}>
       {label && (
         <label>{label}</label>
       )}
       <input
         type={type}
         value={value}
-        className={customClass}
+        className={inputClass}
         placeholder={placeholder}
         onChange={onChangeHandle}
       />
@@ -58,9 +59,8 @@ InputField.defaultProps = {
   value: '',
   type: 'text',
   label: '',
-  customClass: 'app-input-field-item',
+  divClass: 'app-input-field',
+  inputClass: 'app-input-field-item',
   placeholder: '',
   validators: []
 }
-
-export default InputField;
