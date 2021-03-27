@@ -30,7 +30,6 @@ input:focus {
   display: block;
 }
 .app-wrapper {
-  color: #ffffff;
   background-color: var(--darkgray);
   min-height: 100vh;
   display: flex;
@@ -38,6 +37,9 @@ input:focus {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2.6vmin);
+}
+.app-wrapper p {
+  color: var(--white);
 }
 .app-form {
   width: 500px;
@@ -53,6 +55,9 @@ input:focus {
   flex-direction: column;
   position: relative;
   margin-bottom: 24px;
+}
+.app-input-field:last-child {
+  margin-bottom: 0px;
 }
 .app-input-field label {
   width: 100%;
