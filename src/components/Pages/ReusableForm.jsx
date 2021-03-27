@@ -22,7 +22,6 @@ export default function ReusableForm() {
   const {name, email, phone} = initValue;
   return (
     <div className="app-form">
-      <em>{JSON.stringify(initValue)}</em>
       <InputField 
         type="text"
         value={name} 

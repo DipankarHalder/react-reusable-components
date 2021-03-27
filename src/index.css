@@ -5,6 +5,7 @@
   --gray: #8d8d8d;
   --border: #cccccc;
   --error: #ec0000;
+  --btnCol: #0056e0;
 
   --amaranth: "Amaranth", sans-serif;
   --roboto: "Roboto", sans-serif;
@@ -54,10 +55,7 @@ input:focus {
   display: flex;
   flex-direction: column;
   position: relative;
-  margin-bottom: 24px;
-}
-.app-input-field:last-child {
-  margin-bottom: 0px;
+  margin-bottom: 20px;
 }
 .app-input-field label {
   width: 100%;
@@ -90,5 +88,22 @@ input:focus {
   color: var(--error);
   font-family: var(--roboto);
   font-weight: 500;
-  bottom: -16px;
+  bottom: -14px;
+}
+.app-input-field-btn {
+  width: 100%;
+  position: relative;
+  margin-bottom: 0px;
+}
+.app-btn {
+  width: auto;
+  padding: 10px 30px;
+  border-radius: 3px;
+  border: 0px solid transparent;
+}
+.btn-prmry {
+  background-color: var(--btnCol);
+  text-transform: uppercase;
+  color: var(--white);
+  font-size: 12px;
 }
