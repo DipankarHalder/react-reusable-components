@@ -3,37 +3,53 @@ import InputField from '../Elements/Form/InputField';
 import { Validators } from '../Elements/Utilities/Validator';
 
 export default function ReusableForm() {
-
-  const [value, setValue] = useState('');
-  const changeHandle = (value) => {
-    console.log(value);
-    setValue(value);
+  const [initValue, setInitValue] = useState({
+    name: '',
+    email: '',
+    phone: ''
+  });
+  
+  const changeHandle = (key) => (value) => {
+    setInitValue({ ...initValue, [key]: value });
   }
 
+  const {name, email, phone} = initValue;
   return (
     <div className="app-form">
+      <em>{JSON.stringify(initValue)}</em>
       <InputField 
         type="text"
-        value={value} 
+        value={name} 
         placeholder="Please enter full name"
         label="Full name"
         validators={[{
           check: Validators.required, 
           message: 'Full name is required'
         }]}
-        onChange={changeHandle} 
+        onChange={changeHandle('name')} 
       />
-      {/* <InputField 
+      <InputField 
         type="email"
-        value={initValue.email} 
+        value={email} 
         placeholder="Please enter email address"
         label="Email address"
         validators={[{
-          check: Validators.required, 
-          message: 'Email address is required'
+          check: Validators.email, 
+          message: 'Please enter valid email address'
         }]}
-        onChange={changeHandle} 
-      /> */}
+        onChange={changeHandle('email')} 
+      />
+      <InputField 
+        type="text"
+        value={phone} 
+        placeholder="Please enter phone number"
+        label="Phone Number"
+        validators={[{
+          check: Validators.number, 
+          message: 'Please enter valid phone number'
+        }]}
+        onChange={changeHandle('phone')} 
+      />
     </div>
   )
 }
