@@ -28,6 +28,6 @@ Button.propTypes = {
 *************************************/
 Button.defaultProps = {
   type: 'button', // button / submit / reset
-  divClass: 'app-input-field',
+  divClass: 'app-input-field-btn',
   btnClass: 'btn-prmry'
 }
