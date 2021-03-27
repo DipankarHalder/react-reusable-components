@@ -13,7 +13,6 @@ function InputField({
 }) {
 
   const [error, setError] = useState(false);
-  
   const onChangeHandle = (event) => {
     const { value } = event.target;
     setError(validateInput(validators, value));

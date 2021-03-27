@@ -17,9 +17,10 @@ export default function ReusableForm() {
         value={value} 
         placeholder="Hello text"
         label="name"
-        validators={[
-          {check: Validators.required, message: 'This field is required'}
-        ]}
+        validators={[{
+          check: Validators.required, 
+          message: 'This field is required'
+        }]}
         onChange={changeHandle} 
       />
     </div>
