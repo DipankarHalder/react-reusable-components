@@ -11,7 +11,6 @@ export class Validators {
       const result = regex.email.test(value);
       if (!result) return { error: true, message };
     }
-    // return false;
   }
 
   static required(value, message) {
@@ -23,14 +22,12 @@ export class Validators {
 
   static number(value, message) {
     const length = value ? value.toString().length : 0;
-
     if (length > 0) {
       const result = regex.number.test(value);
       if (!result) {
         return { error: true, message };
       }
     }
-
     return false;
   }
 }
