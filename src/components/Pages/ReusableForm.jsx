@@ -35,51 +35,53 @@ export default function ReusableForm() {
 
   const {name, email, phone} = initValue;
   return (
-    <div className="app-form">
-      <InputField 
-        type="text"
-        value={name} 
-        placeholder="Please enter full name"
-        label="Full name"
-        validators={[{
-          check: Validators.required, 
-          message: 'Full name is required'
-        }]}
-        onChange={changeHandleInput('name')} 
-      />
-      <InputField 
-        type="email"
-        value={email} 
-        placeholder="Please enter email address"
-        label="Email address"
-        validators={[{
-          check: Validators.email, 
-          message: 'Please enter valid email address'
-        }]}
-        onChange={changeHandleInput('email')} 
-      />
-      <InputField 
-        type="text"
-        value={phone} 
-        placeholder="Please enter phone number"
-        label="Phone Number"
-        validators={[{
-          check: Validators.number, 
-          message: 'Please enter valid phone number'
-        }]}
-        onChange={changeHandleInput('phone')} 
-      />
-      <DropDown 
-        data={dropData}
-        value={language}
-        initPlaceholder="Select Language"
-        onChange={changeHandleDropDown}
-      />
-      <p>{new Date().toLocaleTimeString(language === '' ? "en" : language)}</p>
-      <Button
-        value="Click me!"
-        onClick={clickHandleButton}
-      />
+    <div className="app-page-wrapper">
+      <div className="app-form">
+        <InputField 
+          type="text"
+          value={name} 
+          placeholder="Please enter full name"
+          label="Full name"
+          validators={[{
+            check: Validators.required, 
+            message: 'Full name is required'
+          }]}
+          onChange={changeHandleInput('name')} 
+        />
+        <InputField 
+          type="email"
+          value={email} 
+          placeholder="Please enter email address"
+          label="Email address"
+          validators={[{
+            check: Validators.email, 
+            message: 'Please enter valid email address'
+          }]}
+          onChange={changeHandleInput('email')} 
+        />
+        <InputField 
+          type="text"
+          value={phone} 
+          placeholder="Please enter phone number"
+          label="Phone Number"
+          validators={[{
+            check: Validators.number, 
+            message: 'Please enter valid phone number'
+          }]}
+          onChange={changeHandleInput('phone')} 
+        />
+        <DropDown 
+          data={dropData}
+          value={language}
+          initPlaceholder="Select Language"
+          onChange={changeHandleDropDown}
+        />
+        <p>{new Date().toLocaleTimeString(language === '' ? "en" : language)}</p>
+        <Button
+          value="Click me!"
+          onClick={clickHandleButton}
+        />
+      </div>
     </div>
   )
 }
