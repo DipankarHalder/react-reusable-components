@@ -5,7 +5,7 @@ import InputField from '../Elements/Form/InputField';
 import { Validators } from '../Elements/Utilities/Validator';
 
 export default function ReusableForm() {
-  const [initValue, setInitValue] = useState({ name: '', email: '', phone: '' });
+  const [initValue, setInitValue] = useState({ name: '', email: '', phone: '', msg: '' });
   const [language, setLanguage] = useState('');
 
   // for DropDown initial value
@@ -33,7 +33,7 @@ export default function ReusableForm() {
     setLanguage(langs);
   }
 
-  const {name, email, phone} = initValue;
+  const {name, email, phone, msg} = initValue;
   return (
     <div className="app-page-wrapper">
       <div className="app-form">
@@ -76,7 +76,22 @@ export default function ReusableForm() {
           initPlaceholder="Select Language"
           onChange={changeHandleDropDown}
         />
-        <p>{new Date().toLocaleTimeString(language === '' ? "en" : language)}</p>
+        <p>
+          {new Date()
+            .toLocaleTimeString(language === '' ? "en" : language)
+          }
+        </p>
+        <InputField 
+          type="textarea"
+          value={msg} 
+          placeholder="Please enter message"
+          label="Message"
+          validators={[{
+            check: Validators.required, 
+            message: 'Please enter valid message'
+          }]}
+          onChange={changeHandleInput('msg')} 
+        />
         <Button
           value="Click me!"
           onClick={clickHandleButton}
