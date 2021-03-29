@@ -25,13 +25,25 @@ export default function InputField({
       {label && (
         <label>{label}</label>
       )}
-      <input
-        type={type}
-        value={value}
-        className={inputClass}
-        placeholder={placeholder}
-        onChange={onChangeHandle}
-      />
+
+      {type === 'textarea' ? (
+        <textarea 
+          className={inputClass}
+          value={value}
+          // defaultValue={value}
+          placeholder={placeholder}
+          onChange={onChangeHandle}
+        />
+      ) : (
+        <input
+          type={type}
+          value={value}
+          className={inputClass}
+          placeholder={placeholder}
+          onChange={onChangeHandle}
+        />
+      )}
+      
       {error && (
         <span>{error.message}</span>
       )}
