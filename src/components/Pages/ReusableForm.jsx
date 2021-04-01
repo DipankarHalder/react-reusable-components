@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Button from '../Elements/Form/Button';
+// import CheckBox from '../Elements/Form/CheckBox';
 import DropDown from '../Elements/Form/DropDown';
 import InputField from '../Elements/Form/InputField';
 import { Validators } from '../Elements/Utilities/Validator';
@@ -7,9 +8,10 @@ import { Validators } from '../Elements/Utilities/Validator';
 export default function ReusableForm() {
   const [initValue, setInitValue] = useState({ name: '', email: '', phone: '', msg: '' });
   const [language, setLanguage] = useState('');
+  // const [acceptance, setAcceptance] = useState(false);
 
   // for DropDown initial value
-  const dropData = [
+  const _dropData = [
     { value: "hi", label: "IN"},
     { value: "bn", label: "BD"},
     { value: "ar", label: "SA"},
@@ -18,20 +20,27 @@ export default function ReusableForm() {
   ]
   
   // for input onChnage
-  const changeHandleInput = (key) => (value) => {
+  const _changeHandleInput = (key) => (value) => {
     setInitValue({ ...initValue, [key]: value });
   }
 
   // for button onClick
-  const clickHandleButton = (event) => {
+  const _clickHandleButton = (event) => {
     event.preventDefault();
     console.log(Math.random());
   }
 
   // for dropdown onChnage
-  const changeHandleDropDown = (langs) => {
+  const _changeHandleDropDown = (langs) => {
     setLanguage(langs);
   }
+
+  // for checkbox onChange
+  // const _changeHandleCheckbox = (acceptance) => {
+  //   console.log("inside change", acceptance);
+  //   setAcceptance(!acceptance);
+  //   // const selectedID = event.target.value;
+  // }
 
   const {name, email, phone, msg} = initValue;
   return (
@@ -46,7 +55,7 @@ export default function ReusableForm() {
             check: Validators.required, 
             message: 'Full name is required'
           }]}
-          onChange={changeHandleInput('name')} 
+          onChange={_changeHandleInput('name')} 
         />
         <InputField 
           type="email"
@@ -57,7 +66,7 @@ export default function ReusableForm() {
             check: Validators.email, 
             message: 'Please enter valid email address'
           }]}
-          onChange={changeHandleInput('email')} 
+          onChange={_changeHandleInput('email')} 
         />
         <InputField 
           type="text"
@@ -68,13 +77,13 @@ export default function ReusableForm() {
             check: Validators.number, 
             message: 'Please enter valid phone number'
           }]}
-          onChange={changeHandleInput('phone')} 
+          onChange={_changeHandleInput('phone')} 
         />
         <DropDown 
-          data={dropData}
+          data={_dropData}
           value={language}
           initPlaceholder="Select Language"
-          onChange={changeHandleDropDown}
+          onChange={_changeHandleDropDown}
         />
         <p>
           {new Date()
@@ -90,11 +99,16 @@ export default function ReusableForm() {
             check: Validators.required, 
             message: 'Please enter valid message'
           }]}
-          onChange={changeHandleInput('msg')} 
+          onChange={_changeHandleInput('msg')} 
         />
+        {/* <CheckBox 
+          label='I Accept'
+          selected={acceptance}
+          onChange={_changeHandleCheckbox(acceptance)}
+        /> */}
         <Button
           value="Click me!"
-          onClick={clickHandleButton}
+          onClick={_clickHandleButton}
         />
       </div>
     </div>

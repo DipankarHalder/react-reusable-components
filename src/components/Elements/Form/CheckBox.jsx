@@ -8,10 +8,10 @@ export default function CheckBox({
   onChange
 }) {
 
-  const onChangeHandle = (event) => {
-    const { selected } = event.target;
-    onChange(selected);
-  }
+  const _onChangeHandle = (event) => {
+    const {checked} = event.target;
+    onChange(checked);
+  };
 
   return (
     <div className={divClass}>
@@ -20,7 +20,7 @@ export default function CheckBox({
           type="checkbox"
           value={selected}
           defaultChecked={selected}
-          onChange={onChangeHandle}
+          onChange={_onChangeHandle}
         />
         <span>{label}</span>
       </label>
